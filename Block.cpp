@@ -8,7 +8,7 @@
 #include <sstream>
 #include "sha256.h"
 
-Block::Block(size_t indexIn, string dataIn) : index(indexIn), data(std::move(dataIn)) {
+Block::Block(size_t indexIn, Delivery dataIn) : index(indexIn), data(dataIn) {
     noonce = -1;
     our_time = time(nullptr);
 }
@@ -19,7 +19,7 @@ string Block::getHash() {
 
 inline string Block::calculateHash() const {
     stringstream ss;
-    ss << index << our_time << data << noonce << prevHash;
+    ss << index << our_time << data.toString() << noonce << prevHash;
 
     return sha256(ss.str());
 }

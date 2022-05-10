@@ -6,7 +6,7 @@
 #include "Block.h"
 
 Blockchain::Blockchain() {
-    chain.emplace_back(Block(0, "Genesis Block"));
+    chain.emplace_back(Block(0, Delivery(time(nullptr), time(nullptr), Success)));
     difficulty = 6;
 }
 

@@ -7,6 +7,8 @@
 
 #include <cstdint>
 #include <iostream>
+#include "Delivery.h"
+
 using namespace std;
 
 
@@ -15,16 +17,22 @@ class Block {
 public:
     string prevHash;
 
-    Block(size_t indexIn, string dataIn);
+    Block(size_t indexIn, Delivery dataIn);
 
     string getHash();
 
     void mineBlock(size_t difficulty);
 
+    Delivery getData() const {
+        return data;
+    }
+
+
+
 private:
-    size_t index{};
+    size_t index;
     int64_t noonce;
-    string data;
+    Delivery data;
     string hash;
     time_t our_time;
 
